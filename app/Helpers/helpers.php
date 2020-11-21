@@ -87,3 +87,20 @@ if (! function_exists('include_route_files')) {
     }
 }
 
+if (! function_exists('log_exception')) {
+    /**
+     * Log the exception.
+     *
+     * @param Throwable $exception
+     */
+    function log_exception(Throwable $exception)
+    {
+        if (app()->environment('local')) {
+            Log::error($exception);
+        }
+
+        if (app()->environment('staging') || app()->environment('production')) {
+            Log::error($exception);
+        }
+    }
+}

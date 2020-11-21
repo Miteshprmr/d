@@ -11,3 +11,18 @@
 |
 */
 
+// Register the user.
+Route::post('register', 'Auth\RegistrationController@register');
+
+// User login.
+Route::post('login', 'Auth\LoginController@login');
+
+// Generate the access token using refresh token.
+Route::post('refresh-token', 'Auth\LoginController@refreshToken');
+
+Route::middleware('auth')->group(function () {
+
+    // Logout the user.
+    Route::post('logout', 'Auth\SessionController@logout');
+
+});
