@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::post('', 'BankAccountController@store')->name('accounts.store');
 
         // Get single bank account of user.
-        Route::get('/{bankAccount}', 'BankAccountController@show')->name('accounts.show');
+        Route::get('/{bankAccount}', 'BankAccountController@show')->name('accounts.show')->middleware('can:view,bankAccount');;
 
         // Update an existing bank account.
         Route::put('/{bankAccount}', 'BankAccountController@update')->name('accounts.update')->middleware('can:update,bankAccount');

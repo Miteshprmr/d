@@ -11,6 +11,18 @@ class BankAccountPolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the user can view the BankAccount.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\BankAccount $bankAccount
+     * @return bool
+     */
+    public function view(User $user, BankAccount $bankAccount)
+    {
+        return $user->id === $bankAccount->user_id;
+    }
+
+    /**
      * Determine whether the user can update the BankAccount.
      *
      * @param \App\Models\User $user
