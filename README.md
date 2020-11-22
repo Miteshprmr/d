@@ -39,6 +39,7 @@ Run the following commands in Terminal
     php artisan cache:clear
     php artisan config:clear 
     php artisan config:cache
+    composer dump-autoload
 
 ## Postman Collection
 
