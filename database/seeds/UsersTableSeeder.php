@@ -14,7 +14,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::transaction(function () {
-            factory(App\User::class, 5)->create();
+            factory(App\Models\User::class, 5)
+            ->create()
+            ->each(function ($user) {
+                $user->bankAccounts()->save(factory(\App\Models\BankAccount::class)->make());
+            });;
         });
     }
 }

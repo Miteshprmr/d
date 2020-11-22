@@ -97,4 +97,13 @@ class User extends Authenticatable
     {
         return self::resolveUserFromUsername($username);
     }
+
+    /**
+     * Get the bank accounts for the user.
+     */
+    public function bankAccounts()
+    {
+        return $this->hasMany(BankAccount::class, 'user_id', 'id');
+    }
+
 }
