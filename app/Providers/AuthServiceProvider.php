@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Passport\Client;
+use App\Models\BankAccount;
 use Laravel\Passport\Passport;
+use App\Policies\BankAccountPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -15,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        BankAccount::class => BankAccountPolicy::class,
     ];
 
     /**
